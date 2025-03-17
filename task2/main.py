@@ -1,14 +1,9 @@
-from abc import ABC, abstractmethod
-import logging
+import sys
+import os
 
-logging.basicConfig(
-    format="%(asctime)s %(message)s",
-    level=logging.DEBUG,
-    handlers=[
-        logging.FileHandler("program.log"),
-        logging.StreamHandler(),
-    ],
-)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from abc import ABC
+from logger import logger
 
 
 class Book:
@@ -47,7 +42,7 @@ class Library(LibraryInterface):
 
     def show_books(self):
         for book in self.books:
-            logging.info(book)
+            logger.info(book)
 
 
 class LibraryManager:

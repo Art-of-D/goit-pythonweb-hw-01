@@ -1,4 +1,9 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from abc import ABC, abstractmethod
+from logger import logger
 
 
 class VehicleFactory(ABC):
@@ -40,12 +45,12 @@ class Vehicle(ABC):
 
 class Car(Vehicle):
     def start_engine(self):
-        print(f"{self.make} {self.model} ({self.region} Spec): Двигун запущено")
+        logger.info(f"{self.make} {self.model} ({self.region} Spec): Двигун запущено")
 
 
 class Motorcycle(Vehicle):
     def start_engine(self):
-        print(f"{self.make} {self.model} ({self.region} Spec): Мотор заведено")
+        logger.info(f"{self.make} {self.model} ({self.region} Spec): Мотор заведено")
 
 
 us_factory = USVehicleFactory()
